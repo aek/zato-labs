@@ -17,7 +17,7 @@ from zato.server.service import Service
 OE_CONN_INFO_PREFIX = 'zato:openerp:conn-info'
 OE_PARAMS = {}
 
-for name in('hostname', 'database', 'port', 'login', 'password'):
+for name in('hostname', 'database', 'port', 'login', 'password', 'protocol'):
     OE_PARAMS[name] = '{}:{}'.format(OE_CONN_INFO_PREFIX, name)
 
 class Client(object):
@@ -74,7 +74,8 @@ class OpenERPService(Service):
             'database': None,
             'port': None,
             'login': None,
-            'password': None
+            'password': None,
+            'protocol': None,
         }
         missing = []
         for param in params:
